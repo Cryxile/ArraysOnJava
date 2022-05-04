@@ -20,9 +20,9 @@ public class ArrayProject {
 
         boolean correctInput = false;
         while (!correctInput) {
-            System.out.print("Enter the dimension value of the array: ");
-            String arrayDimensionValueStr = inputScanner.nextLine();
-
+            System.out.print("Enter the dimension value of the array: "); // сейчас ты вводишь неправильные символы и только после ввода всех символов утебя выскакивает "wrong symbol"
+            String arrayDimensionValueStr = inputScanner.nextLine(); //сделай так, чтобы сразу же после ввода хотя бы одного неправильно значения у тебя перезапускался весь блок ввода
+            // спойлер: нужно сделать здесь же в цикле, с 1 try catch, скомбинировав твой прошлый подход и текущий
             System.out.print("Enter the minimal random value: ");
             String arrayMinRandomValueStr = inputScanner.nextLine();
 
@@ -67,7 +67,8 @@ public class ArrayProject {
                 int tempValue = randomValues[i];
                 if (tempValue % 2 == 0) {
                     arrayEvenValuesCount += 1;
-                } else {
+                }
+                else {
                     arrayOddValuesCount += 1;
                 }
             }
@@ -178,7 +179,7 @@ public class ArrayProject {
             sumOfArrayValues += (float) randomValues[i];
         }
         arrayAverageValue = sumOfArrayValues / arrayDimensionValue;                               // Нахождение среднего значения
-        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", arrayMaxValue, arrayMinValue, arrayAverageValue);
+        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", arrayMaxValue, arrayMinValue,  arrayAverageValue);
         inputScanner.close();
     }
 
