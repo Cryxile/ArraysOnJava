@@ -3,47 +3,63 @@ import java.util.*;
 public class ArrayProject {
 
     public static void main(String[] args) {
-        //input from console min val - v
-        //input from console max val - v
-        //input from console array volume - v
-        //запросить у пользователя желает ли он вывод массива в консоль - v
-        //сортировОЧКу - v
 
-        int arrayDimensionValue = 0;
-        int arrayMinRandomValue = 0;
-        int arrayMaxRandomValue = 0;
+        int arrayDimensionValue;
+        int arrayMinRandomValue;
+        int arrayMaxRandomValue;
         int arrayMaxValue;
         int arrayMinValue;
         float arrayAverageValue;
-        String arrayPrintQuestion = "";
+        String arrayPrintQuestion;
         Scanner inputScanner = new Scanner(System.in);
 
-        boolean correctInput = false;
-        while (!correctInput) {
-            System.out.print("Enter the dimension value of the array: "); // сейчас ты вводишь неправильные символы и только после ввода всех символов утебя выскакивает "wrong symbol"
-            String arrayDimensionValueStr = inputScanner.nextLine(); //сделай так, чтобы сразу же после ввода хотя бы одного неправильно значения у тебя перезапускался весь блок ввода
-            // спойлер: нужно сделать здесь же в цикле, с 1 try catch, скомбинировав твой прошлый подход и текущий
-            System.out.print("Enter the minimal random value: ");
-            String arrayMinRandomValueStr = inputScanner.nextLine();
-
-            System.out.print("Enter the maximum random value: ");
-            String arrayMaxRandomValueStr = inputScanner.nextLine();
-
-            System.out.print("Do you want to print array to console? (y/n) ");
-            String arrayPrintQuestionStr = inputScanner.nextLine();
-
+        while (true) {
             try {
-                arrayDimensionValue = Integer.parseInt(arrayDimensionValueStr);
-                arrayMinRandomValue = Integer.parseInt(arrayMinRandomValueStr);
-                arrayMaxRandomValue = Integer.parseInt(arrayMaxRandomValueStr);
-                arrayPrintQuestion = arrayPrintQuestionStr;
-                if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n") || arrayDimensionValue < 1) {
+                System.out.print("Enter the dimension value of the array: ");
+                arrayDimensionValue = Integer.parseInt(inputScanner.nextLine());
+                if (arrayDimensionValue < 1) {
                     throw new Exception();
                 }
-                correctInput = true;
-            } catch (Exception e) {
+                break;
+            }
+            catch (Exception e) {
                 System.out.println("Wrong symbols!");
-                correctInput = false;
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Enter the minimal random value: ");
+                arrayMinRandomValue = Integer.parseInt(inputScanner.nextLine());
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Wrong symbols!");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Enter the maximum random value: ");
+                arrayMaxRandomValue = Integer.parseInt(inputScanner.nextLine());
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Wrong symbols!");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Do you want to print array to console? (y/n) ");
+                arrayPrintQuestion = inputScanner.nextLine();
+                if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n")) {
+                    throw new Exception();
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Wrong symbols!");
             }
         }
 
@@ -185,18 +201,4 @@ public class ArrayProject {
 
 }
 
-// 5 7 2 6 1 2
-//           n
-// 5 2 7 6 1 2
-// 5 2 6 7 1 2
-// 5 2 6 1 7 2
-// 5 2 6 1 2 7
-//         n
-// 2 5 6 1 2 7
-// 2 5 1 6 2 7
-// 2 5 1 2 6 7
-//       n
-// 2 1 5 2 6 7
-// 2 1 2 5 6 7
-//     n
-// 1 2 2 5 6 7
+// Создать новую ветку, закоммитить ветку, не мерджить с меином
