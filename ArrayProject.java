@@ -13,7 +13,6 @@ public class ArrayProject {
 
         Random rand = new Random();
         int[] randomValues = new int[arrayDimensionValue];
-
         for (int i = 0; i < arrayDimensionValue; i++) {                                    // Заполнение массива случайными числами
             randomValues[i] = Math.round(rand.nextInt(arrayMinRandomValue, arrayMaxRandomValue + 1));
         }
@@ -22,23 +21,23 @@ public class ArrayProject {
 
         if (arrayPrintQuestion.equals("y")) {                                              // Вывод значений массива в консоль
 
-            operationsWithArray.printOriginalArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printArray(randomValues);
 
-            operationsWithArray.countOddAndEvenValuesOfArray(arrayDimensionValue, randomValues);
+            operationsWithArray.countOddAndEvenValuesOfArray(randomValues);
 
-            operationsWithArray.printEvenValuesOfArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printEvenValuesOfArray(randomValues);
 
-            operationsWithArray.printOddValuesOfArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printOddValuesOfArray(randomValues);
 
-            operationsWithArray.printAscendingSelectionSortedArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printAscendingSelectionSortedArray(randomValues);
 
-            operationsWithArray.printDescendingSelectionSortedArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printDescendingSelectionSortedArray(randomValues);
 
-            operationsWithArray.printAscendingBubbleSortedArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printAscendingBubbleSortedArray(randomValues);
 
-            operationsWithArray.printDescendingBubbleSortedArray(arrayDimensionValue, randomValues);
+            operationsWithArray.printDescendingBubbleSortedArray(randomValues);
         }
 
-        operationsWithArray.printMinMaxAverageValuesOfArray(arrayDimensionValue,randomValues);
+        operationsWithArray.printMinMaxAverageValuesOfArray(randomValues);
     }
 }
