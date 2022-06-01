@@ -1,67 +1,15 @@
 import java.util.*;
 
+
 public class ArrayProject {
 
     public static void main(String[] args) {
 
-        int arrayDimensionValue;
-        int arrayMinRandomValue;
-        int arrayMaxRandomValue;
-        int arrayMaxValue;
-        int arrayMinValue;
-        float arrayAverageValue;
-        String arrayPrintQuestion;
-        Scanner inputScanner = new Scanner(System.in);
-
-        while (true) {
-            try {
-                System.out.print("Enter the dimension value of the array: ");
-                arrayDimensionValue = Integer.parseInt(inputScanner.nextLine());
-                if (arrayDimensionValue < 1) {
-                    throw new Exception();
-                }
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Wrong symbols!");
-            }
-        }
-
-        while (true) {
-            try {
-                System.out.print("Enter the minimal random value: ");
-                arrayMinRandomValue = Integer.parseInt(inputScanner.nextLine());
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Wrong symbols!");
-            }
-        }
-
-        while (true) {
-            try {
-                System.out.print("Enter the maximum random value: ");
-                arrayMaxRandomValue = Integer.parseInt(inputScanner.nextLine());
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Wrong symbols!");
-            }
-        }
-
-        while (true) {
-            try {
-                System.out.print("Do you want to print array to console? (y/n) ");
-                arrayPrintQuestion = inputScanner.nextLine();
-                if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n")) {
-                    throw new Exception();
-                }
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Wrong symbols!");
-            }
-        }
+        InputWithCheck inputWithCheck = new InputWithCheck();
+        int arrayDimensionValue = inputWithCheck.readAndCheckDimensionValue();
+        int arrayMinRandomValue = inputWithCheck.readAndCheckMinRandomValueOfArray();
+        int arrayMaxRandomValue = inputWithCheck.readAndCheckMaxRandomValueOfArray();
+        String arrayPrintQuestion = inputWithCheck.readAndCheckPrintQuestionOfArray();
 
         Random rand = new Random();
         int[] randomValues = new int[arrayDimensionValue];
@@ -70,135 +18,27 @@ public class ArrayProject {
             randomValues[i] = Math.round(rand.nextInt(arrayMinRandomValue, arrayMaxRandomValue + 1));
         }
 
+        OperationsWithArray operationsWithArray = new OperationsWithArray();
+
         if (arrayPrintQuestion.equals("y")) {                                              // Вывод значений массива в консоль
-            System.out.print("Original array: \n");                                        // Вывод оригинального массива
-            for (int i = 0; i < arrayDimensionValue; i++) {
-                System.out.print(randomValues[i] + "  ");
-            }
 
-            int arrayEvenValuesCount = 0;
-            int arrayOddValuesCount = 0;
+            operationsWithArray.printOriginalArray(arrayDimensionValue, randomValues);
 
-            for (int i = 0; i < arrayDimensionValue; i++) {                                 // Подсчёт четных и нечетных значений
-                int tempValue = randomValues[i];
-                if (tempValue % 2 == 0) {
-                    arrayEvenValuesCount += 1;
-                }
-                else {
-                    arrayOddValuesCount += 1;
-                }
-            }
+            operationsWithArray.countOddAndEvenValuesOfArray(arrayDimensionValue, randomValues);
 
-            int[] arrayEvenValues = new int[arrayEvenValuesCount];
-            int[] arrayOddValues = new int[arrayOddValuesCount];
-            int arrayElementNumber = 0;
+            operationsWithArray.printEvenValuesOfArray(arrayDimensionValue, randomValues);
 
-            System.out.print("\nArray even values: \n");                                    // Вывод четных значений массива
-            for (int i = 0; i < arrayEvenValuesCount; i++) {
-                for (int j = arrayElementNumber; j < arrayDimensionValue; j++) {
-                    int tempValue = randomValues[j];
-                    if (tempValue % 2 == 0) {
-                        arrayEvenValues[i] = tempValue;
-                        arrayElementNumber = j + 1;
-                        break;
-                    }
-                }
-                System.out.print(arrayEvenValues[i] + "  ");
-            }
+            operationsWithArray.printOddValuesOfArray(arrayDimensionValue, randomValues);
 
-            arrayElementNumber = 0;
+            operationsWithArray.printAscendingSelectionSortedArray(arrayDimensionValue, randomValues);
 
-            System.out.print("\nArray odd values: \n");                                       // Вывод нечетных значений массива
-            for (int i = 0; i < arrayOddValuesCount; i++) {
-                for (int j = arrayElementNumber; j < arrayDimensionValue; j++) {
-                    int tempValue = randomValues[j];
-                    if (tempValue % 2 != 0) {
-                        arrayOddValues[i] = tempValue;
-                        arrayElementNumber = j + 1;
-                        break;
-                    }
-                }
-                System.out.print(arrayOddValues[i] + "  ");
-            }
+            operationsWithArray.printDescendingSelectionSortedArray(arrayDimensionValue, randomValues);
 
-            System.out.print("\nSorted ascending array (Selection): \n");                     // СортировОчка (выбором) по возрастанию
-            for (int i = 0; i < arrayDimensionValue; i++) {
-                int minValue = randomValues[i];
-                int minValueNumber = i;
-                for (int j = i + 1; j < arrayDimensionValue; j++) {
-                    if (randomValues[j] < minValue) {
-                        minValue = randomValues[j];
-                        minValueNumber = j;
-                    }
-                }
-                if (i != minValueNumber) {
-                    int tempVariable = randomValues[i];
-                    randomValues[i] = minValue;
-                    randomValues[minValueNumber] = tempVariable;
-                }
-                System.out.print(randomValues[i] + "  ");
-            }
+            operationsWithArray.printAscendingBubbleSortedArray(arrayDimensionValue, randomValues);
 
-            System.out.print("\nSorted descending array (Selection): \n");                     // СортировОчка (выбором) по убыванию
-            for (int i = arrayDimensionValue - 1; i >= 0; i--) {
-                int maxValue = randomValues[i];
-                int maxValueNumber = i;
-                for (int j = 0; j < i; j++) {
-                    if (randomValues[j] > maxValue) {
-                        maxValue = randomValues[j];
-                        maxValueNumber = j;
-                    }
-                }
-                if (i != maxValueNumber) {
-                    int tempVariable = randomValues[i];
-                    randomValues[i] = maxValue;
-                    randomValues[maxValueNumber] = tempVariable;
-                }
-                System.out.print(randomValues[i] + "  ");
-            }
-
-            System.out.print("\nSorted ascending array (Bubble): \n");                          // СортировОчка (пузырьковая) по возрастанию
-            for (int i = 0; i < arrayDimensionValue; i++) {
-                for (int j = arrayDimensionValue - 1; j > i; j--) {
-                    if (randomValues[j] < randomValues[j - 1]) {
-                        int tempValue = randomValues[j - 1];
-                        randomValues[j] = randomValues[j - 1];
-                        randomValues[j - 1] = tempValue;
-                    }
-                }
-                System.out.print(randomValues[i] + "  ");
-            }
-
-            System.out.print("\nSorted descending array (Bubble): \n");                         // СортировОчка (пузырьковая) по убыванию
-            for (int i = arrayDimensionValue - 1; i >= 0; i--) {
-                for (int j = 0; j < i; j++) {
-                    if (randomValues[j] > randomValues[j + 1]) {
-                        int tempValue = randomValues[j + 1];
-                        randomValues[j] = randomValues[j + 1];
-                        randomValues[j + 1] = tempValue;
-                    }
-                }
-                System.out.print(randomValues[i] + "  ");
-            }
+            operationsWithArray.printDescendingBubbleSortedArray(arrayDimensionValue, randomValues);
         }
 
-        arrayMinValue = arrayMaxValue = randomValues[0];
-        float sumOfArrayValues = (float) randomValues[0];
-
-        for (int i = 1; i < arrayDimensionValue; i++) {
-            if (arrayMaxValue < randomValues[i]) {                                                // Нахождение наибольшего значения
-                arrayMaxValue = randomValues[i];
-            }
-            if (arrayMinValue > randomValues[i]) {                                                // Нахождение наименьшего значения
-                arrayMinValue = randomValues[i];
-            }
-            sumOfArrayValues += (float) randomValues[i];
-        }
-        arrayAverageValue = sumOfArrayValues / arrayDimensionValue;                               // Нахождение среднего значения
-        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", arrayMaxValue, arrayMinValue,  arrayAverageValue);
-        inputScanner.close();
+        operationsWithArray.printMinMaxAverageValuesOfArray(arrayDimensionValue,randomValues);
     }
-
 }
-
-// Создать новую ветку, закоммитить ветку, не мерджить с меином
