@@ -1,30 +1,30 @@
 public class OperationsWithArray {
 
-    private static int arrayEvenValuesCount;
+    private int[] toPrintMethod;
 
-    private static int arrayOddValuesCount;
+    public void arrayPrintMethod(int[] toPrintMethod) {
 
-    public void printArray(int[] randomValues) {               // Вывод оригинального массива
-        System.out.print("Array: \n");
-        for (int tempValue : randomValues) {
-            System.out.print(tempValue + "  ");
+        for (int i : toPrintMethod) {
+            System.out.print(i + "  ");
         }
     }
 
-    public void countOddAndEvenValuesOfArray(int[] randomValues) {     // Подсчёт четных и нечетных значений
+    public void printArray(int[] randomValues) {                        // Вывод массива
 
-        arrayEvenValuesCount = 0;
-        arrayOddValuesCount = 0;
+        System.out.print("Array: \n");
+        toPrintMethod = randomValues;
+        arrayPrintMethod(toPrintMethod);
+    }
 
-        for (int tempValue : randomValues) {
-            if (tempValue % 2 == 0) {
-                arrayEvenValuesCount += 1;
-            } else {
-                arrayOddValuesCount += 1;
+    public void printEvenValuesOfArray(int[] randomValues) {            // Вывод четных значений массива
+
+        int arrayEvenValuesCount = 0;
+
+        for (int i : randomValues) {
+            if (i % 2 == 0) {
+                arrayEvenValuesCount++;
             }
         }
-    }
-    public void printEvenValuesOfArray(int[] randomValues) {            // Вывод четных значений массива
 
         int[] arrayEvenValues = new int[arrayEvenValuesCount];
         int arrayElementNumber = 0;
@@ -39,11 +39,20 @@ public class OperationsWithArray {
                     break;
                 }
             }
-            System.out.print(arrayEvenValues[i] + "  ");
         }
+        toPrintMethod = arrayEvenValues;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printOddValuesOfArray(int[] randomValues) {            // Вывод нечетных значений массива
+
+        int arrayOddValuesCount = 0;
+
+        for (int i : randomValues) {
+            if (i % 2 != 0) {
+                arrayOddValuesCount++;
+            }
+        }
 
         int[] arrayOddValues = new int[arrayOddValuesCount];
         int arrayElementNumber = 0;
@@ -58,11 +67,14 @@ public class OperationsWithArray {
                     break;
                 }
             }
-            System.out.print(arrayOddValues[i] + "  ");
         }
+        toPrintMethod = arrayOddValues;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printAscendingSelectionSortedArray(int[] randomValues) {               // СортировОчка (выбором) по возрастанию
+
+        int[] selectionSortUp = new int[randomValues.length];
 
         System.out.print("\nSorted ascending array (Selection): \n");
         for (int i = 0; i < randomValues.length; i++) {
@@ -79,11 +91,16 @@ public class OperationsWithArray {
                 randomValues[i] = minValue;
                 randomValues[minValueNumber] = tempVariable;
             }
-            System.out.print(randomValues[i] + "  ");
+            selectionSortUp[i] = randomValues[i];
         }
+        toPrintMethod = selectionSortUp;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printDescendingSelectionSortedArray(int[] randomValues) {              // СортировОчка (выбором) по убыванию
+
+        int[] selectionSortDown = new int[randomValues.length];
+        int elementNumber = 0;
 
         System.out.print("\nSorted descending array (Selection): \n");
         for (int i = randomValues.length - 1; i >= 0; i--) {
@@ -100,11 +117,16 @@ public class OperationsWithArray {
                 randomValues[i] = maxValue;
                 randomValues[maxValueNumber] = tempVariable;
             }
-            System.out.print(randomValues[i] + "  ");
+            selectionSortDown[elementNumber] = randomValues[i];
+            elementNumber++;
         }
+        toPrintMethod = selectionSortDown;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printAscendingBubbleSortedArray(int[] randomValues) {                  // СортировОчка (пузырьковая) по возрастанию
+
+        int[] bubbleSortUp = new int[randomValues.length];
 
         System.out.print("\nSorted ascending array (Bubble): \n");
         for (int i = 0; i < randomValues.length; i++) {
@@ -115,11 +137,16 @@ public class OperationsWithArray {
                     randomValues[j - 1] = tempValue;
                 }
             }
-            System.out.print(randomValues[i] + "  ");
+            bubbleSortUp[i] = randomValues[i];
         }
+        toPrintMethod = bubbleSortUp;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printDescendingBubbleSortedArray(int[] randomValues) {                  // СортировОчка (пузырьковая) по убыванию
+
+        int[] bubbleSortDown = new int[randomValues.length];
+        int elementNumber = 0;
 
         System.out.print("\nSorted descending array (Bubble): \n");
         for (int i = randomValues.length - 1; i >= 0; i--) {
@@ -130,8 +157,11 @@ public class OperationsWithArray {
                     randomValues[j + 1] = tempValue;
                 }
             }
-            System.out.print(randomValues[i] + "  ");
+            bubbleSortDown[elementNumber] = randomValues[i];
+            elementNumber++;
         }
+        toPrintMethod = bubbleSortDown;
+        arrayPrintMethod(toPrintMethod);
     }
 
     public void printMinMaxAverageValuesOfArray(int[] randomValues) {
@@ -152,7 +182,5 @@ public class OperationsWithArray {
         }
         arrayAverageValue = sumOfArrayValues / randomValues.length;                               // Нахождение среднего значения
         System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", arrayMaxValue, arrayMinValue, arrayAverageValue);
-
     }
-
 }
