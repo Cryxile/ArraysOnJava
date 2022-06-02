@@ -10,7 +10,6 @@ public class InputWithCheck {
 
         while (true) {
             try {
-                System.out.print("Enter the dimension value of the array: ");
                 arrayDimensionValue = Integer.parseInt(inputScanner.nextLine());
                 if (arrayDimensionValue < 1) {
                     throw new Exception();
@@ -18,45 +17,25 @@ public class InputWithCheck {
                 break;
             }
             catch (Exception e) {
-                System.out.println("Wrong symbols!1");
+                System.out.println("Wrong symbols!");
             }
         }
         return arrayDimensionValue;
     }
 
-    public int readAndCheckMinRandomValueOfArray() {
+    public int readAndCheckMinAndMaxRandomValue() {
 
-        int arrayMinRandomValue;
-
-        while (true) {
-
-            try {
-                System.out.print("Enter the minimal random value: ");
-                arrayMinRandomValue = Integer.parseInt(inputScanner.nextLine());
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Wrong symbols!2");
-            }
-        }
-        return arrayMinRandomValue;
-    }
-
-    public int readAndCheckMaxRandomValueOfArray() {
-
-        int arrayMaxRandomValue;
+        int enteredValue;
 
         while (true) {
             try {
-                System.out.print("Enter the maximum random value: ");
-                arrayMaxRandomValue = Integer.parseInt(inputScanner.nextLine());
+                enteredValue = Integer.parseInt(inputScanner.nextLine());
                 break;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Wrong symbols!");
             }
         }
-        return arrayMaxRandomValue;
+        return enteredValue;
     }
 
     public String readAndCheckPrintQuestionOfArray() {
@@ -65,7 +44,6 @@ public class InputWithCheck {
 
         while (true) {
             try {
-                System.out.print("Do you want to print arrays to console? (y/n) ");
                 arrayPrintQuestion = inputScanner.nextLine();
                 if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n")) {
                     throw new Exception();
