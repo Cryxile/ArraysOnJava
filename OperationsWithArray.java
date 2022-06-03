@@ -2,9 +2,9 @@ public class OperationsWithArray {
 
     private int[] toPrintMethod; //что? метод? переменная, в которой массив назвывается "метод печатать"? ааа?
 
-    public void arrayPrintMethod(int[] toPrintMethod) {
+    public void arrayPrintMethod(int[] array) {
 
-        for (int i : toPrintMethod) {
+        for (int i : array) {
             System.out.print(i + "  ");
         }
     }
@@ -12,14 +12,12 @@ public class OperationsWithArray {
     public void printArray(int[] randomValues) {                        // Вывод массива
 
         System.out.print("Array: \n");
-        toPrintMethod = randomValues; // мммм, мммм, мм оао а??? у тебя уже есть randomValues, зачем тебе это заносить в toPrintMethod, чтобы потом toPrintMethod передать в
-                                        //arrayPrintMethod ?
-        arrayPrintMethod(toPrintMethod);
+        arrayPrintMethod(randomValues);
     }
 
     public void printEvenValuesOfArray(int[] randomValues) {            // Вывод четных значений массива
 
-        int arrayEvenValuesCount = 0;
+        int arrayEvenValuesCount = 0;                           // через список!!
 
         for (int i : randomValues) {
             if (i % 2 == 0) {
@@ -104,8 +102,8 @@ public class OperationsWithArray {
 
     public void printDescendingSelectionSortedArray(int[] randomValues) {              // СортировОчка (выбором) по убыванию
 
-        int[] selectionSortDown = new int[randomValues.length];
-        int elementNumber = 0;
+        //int[] selectionSortDown = new int[randomValues.length];
+       // int elementNumber = 0;
 
         System.out.print("\nSorted descending array (Selection): \n");
         for (int i = randomValues.length - 1; i >= 0; i--) {
@@ -122,11 +120,10 @@ public class OperationsWithArray {
                 randomValues[i] = maxValue;
                 randomValues[maxValueNumber] = tempVariable;
             }
-            selectionSortDown[elementNumber] = randomValues[i]; //по-моему, это тоже можно объеденить
-            elementNumber++;
+           // selectionSortDown[elementNumber] = randomValues[i]; //по-моему, это тоже можно объеденить
+            //elementNumber++;
         }
-        toPrintMethod = selectionSortDown; //опять
-        arrayPrintMethod(toPrintMethod);
+        arrayPrintMethod(randomValues);
     }
 
     public void printAscendingBubbleSortedArray(int[] randomValues) { //опять вопрос к названию. твой метод ничего не отрисовывает. он сортирует. То что ыт добавил в него отрисовку                  // СортировОчка (пузырьковая) по возрастанию
@@ -144,7 +141,7 @@ public class OperationsWithArray {
                     randomValues[j - 1] = tempValue; // а вот тут новый код. объединять не с чем. оставляем
                 }
             }
-            bubbleSortUp[i] = randomValues[i];
+            bubbleSortUp[i] = randomValues[i];       // отрисовку в отдельный класс!!
         }
         toPrintMethod = bubbleSortUp; // ;(
         arrayPrintMethod(toPrintMethod);
