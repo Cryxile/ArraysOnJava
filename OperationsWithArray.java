@@ -1,6 +1,6 @@
 public class OperationsWithArray {
 
-    private int[] toPrintMethod;
+    private int[] toPrintMethod; //что? метод? переменная, в которой массив назвывается "метод печатать"? ааа?
 
     public void arrayPrintMethod(int[] toPrintMethod) {
 
@@ -12,7 +12,8 @@ public class OperationsWithArray {
     public void printArray(int[] randomValues) {                        // Вывод массива
 
         System.out.print("Array: \n");
-        toPrintMethod = randomValues;
+        toPrintMethod = randomValues; // мммм, мммм, мм оао а??? у тебя уже есть randomValues, зачем тебе это заносить в toPrintMethod, чтобы потом toPrintMethod передать в
+                                        //arrayPrintMethod ?
         arrayPrintMethod(toPrintMethod);
     }
 
@@ -26,7 +27,7 @@ public class OperationsWithArray {
             }
         }
 
-        int[] arrayEvenValues = new int[arrayEvenValuesCount];
+        int[] arrayEvenValues = new int[arrayEvenValuesCount]; // оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
         int arrayElementNumber = 0;
 
         System.out.print("\nArray even values: \n");
@@ -44,33 +45,34 @@ public class OperationsWithArray {
         arrayPrintMethod(toPrintMethod);
     }
 
-    public void printOddValuesOfArray(int[] randomValues) {            // Вывод нечетных значений массива
-
-        int arrayOddValuesCount = 0;
-
-        for (int i : randomValues) {
-            if (i % 2 != 0) {
-                arrayOddValuesCount++;
-            }
-        }
-
-        int[] arrayOddValues = new int[arrayOddValuesCount];
-        int arrayElementNumber = 0;
-
-        System.out.print("\nArray odd values: \n");
-        for (int i = 0; i < arrayOddValuesCount; i++) {
-            for (int j = arrayElementNumber; j < randomValues.length; j++) {
-                int tempValue = randomValues[j];
-                if (tempValue % 2 != 0) {
-                    arrayOddValues[i] = tempValue;
-                    arrayElementNumber = j + 1;
-                    break;
-                }
-            }
-        }
-        toPrintMethod = arrayOddValues;
-        arrayPrintMethod(toPrintMethod);
-    }
+    //подсказка. объедени и поставь внутри условие
+    public void printOddValuesOfArray(int[] randomValues) {            // Вывод нечетных значений массива // оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        int arrayOddValuesCount = 0;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        for (int i : randomValues) {// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+            if (i % 2 != 0) {// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                arrayOddValuesCount++;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+            }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        int[] arrayOddValues = new int[arrayOddValuesCount];// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        int arrayElementNumber = 0;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        System.out.print("\nArray odd values: \n");// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        for (int i = 0; i < arrayOddValuesCount; i++) {// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+            for (int j = arrayElementNumber; j < randomValues.length; j++) {// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                int tempValue = randomValues[j];// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                if (tempValue % 2 != 0) {// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                    arrayOddValues[i] = tempValue;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                    arrayElementNumber = j + 1;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                    break;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+                }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+            }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        toPrintMethod = arrayOddValues;// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+        arrayPrintMethod(toPrintMethod);// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
+    }// оооочень много повторяющегося кода. ООООЧОЕНЬ МНОГОГОГГГГОГОГОГОГОГОГОГОГГОГОГ сокращай
 
     public void printAscendingSelectionSortedArray(int[] randomValues) {               // СортировОчка (выбором) по возрастанию
 
@@ -93,7 +95,10 @@ public class OperationsWithArray {
             }
             selectionSortUp[i] = randomValues[i];
         }
-        toPrintMethod = selectionSortUp;
+        toPrintMethod = selectionSortUp; //опять у тебя есть переменная, которую ты можешь напрямую передать, а ты используешь поле класса для этого. зачем? а еще это достаточно
+                                        //опасно и неправильно. Опасно потому что где-то когда ты забудешь, что у тебя там массив и обратишься к нему, либо щабудешь заменить или еще
+                                        //чего всякого может быть, а там старые данные. Неправильно, потому что ты пишешь универсальный класс для работы с массивами. Всеми. Всякими.
+                                        //любыми. И тут у тебя в поле лежит какой-то непонятный странный массив. (а еще он нигде не нужен, но тебе он похоже очень понравился ;)))))) )
         arrayPrintMethod(toPrintMethod);
     }
 
@@ -117,15 +122,17 @@ public class OperationsWithArray {
                 randomValues[i] = maxValue;
                 randomValues[maxValueNumber] = tempVariable;
             }
-            selectionSortDown[elementNumber] = randomValues[i];
+            selectionSortDown[elementNumber] = randomValues[i]; //по-моему, это тоже можно объеденить
             elementNumber++;
         }
-        toPrintMethod = selectionSortDown;
+        toPrintMethod = selectionSortDown; //опять
         arrayPrintMethod(toPrintMethod);
     }
 
-    public void printAscendingBubbleSortedArray(int[] randomValues) {                  // СортировОчка (пузырьковая) по возрастанию
-
+    public void printAscendingBubbleSortedArray(int[] randomValues) { //опять вопрос к названию. твой метод ничего не отрисовывает. он сортирует. То что ыт добавил в него отрисовку                  // СортировОчка (пузырьковая) по возрастанию
+                                                                    //может не быть хорошо. Тут зависит от ситуаиции. И конкретно в этом случае я не вижу необходимости отрисовывать
+                                                                    //массив при сортировке. Отсортируй, а потом отрисуй. А если ты разделишь эти два метода, то нужно будет данный метод
+                                                                    //переименовать на просто "пузырьковая сортировка", а где-то снаружи потом после сортировки вызовешь отрисовку
         int[] bubbleSortUp = new int[randomValues.length];
 
         System.out.print("\nSorted ascending array (Bubble): \n");
@@ -134,12 +141,12 @@ public class OperationsWithArray {
                 if (randomValues[j] < randomValues[j - 1]) {
                     int tempValue = randomValues[j - 1];
                     randomValues[j] = randomValues[j - 1];
-                    randomValues[j - 1] = tempValue;
+                    randomValues[j - 1] = tempValue; // а вот тут новый код. объединять не с чем. оставляем
                 }
             }
             bubbleSortUp[i] = randomValues[i];
         }
-        toPrintMethod = bubbleSortUp;
+        toPrintMethod = bubbleSortUp; // ;(
         arrayPrintMethod(toPrintMethod);
     }
 
@@ -152,7 +159,7 @@ public class OperationsWithArray {
         for (int i = randomValues.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (randomValues[j] > randomValues[j + 1]) {
-                    int tempValue = randomValues[j + 1];
+                    int tempValue = randomValues[j + 1];  //я поторопился :DDDD видел этот код где-то. Ну, ты знаешь, что делать
                     randomValues[j] = randomValues[j + 1];
                     randomValues[j + 1] = tempValue;
                 }
