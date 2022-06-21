@@ -1,16 +1,5 @@
-import java.util.Random;
-
 public class ArrayProject {
 
-    public static int[] arrayCreation(int arrayDimensionValue, int arrayMinRandomValue, int arrayMaxRandomValue) {
-
-        Random rand = new Random();
-        int[] randomValues = new int[arrayDimensionValue];
-        for (int i = 0; i < arrayDimensionValue; i++) {                                    // Заполнение массива случайными числами
-            randomValues[i] = Math.round(rand.nextInt(arrayMinRandomValue, arrayMaxRandomValue + 1));
-        }
-        return randomValues;
-    }
 
     public static void main(String[] args) {
 
@@ -30,32 +19,28 @@ public class ArrayProject {
         int arrayMaxRandomValue = inputWithCheck.readAndCheckMinAndMaxRandomValue();
 
         System.out.print("Do you want to print arrays to console? (y/n) ");
-        String arrayPrintQuestion = inputWithCheck.readAndCheckPrintQuestionOfArray(); // я бы вообще избавился и как-то по-другому сделал эту часть, но давай доведем ее до ума.
+        boolean arrayPrintQuestion = inputWithCheck.readAndCheckPrintQuestionOfArray(); // я бы вообще избавился и как-то по-другому сделал эту часть, но давай доведем ее до ума.
                                                                                         //Что делает твой метод? В чем его смысл? Добиться от пользователя правильного ввода ответа
                                                                                         //на твой вопрос. Т.е. ты ждешь от пользователя ответа да или нет. Ответ да или нет конечно похож
                                                                                         //на строку, но он еще больше похож на кое-что другое. Отгадай на что он больше похож и поправь
 
 
-        int[] randomValues = arrayCreation(arrayDimensionValue, arrayMinRandomValue, arrayMaxRandomValue);
-
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
-        if (arrayPrintQuestion.equals("y")) {  //некорректная проверка, если ты поправишь метод   readAndCheckPrintQuestionOfArray                                          // Вывод значений массива в консоль
+        int[] randomValues = operationsWithArray.create(arrayDimensionValue, arrayMinRandomValue, arrayMaxRandomValue);
 
-            operationsWithArray.printArray(randomValues);
+        ArrayPrint arrayPrint = new ArrayPrint();
 
-            operationsWithArray.printEvenValuesOfArray(randomValues);
+        if (arrayPrintQuestion) {                                            // Вывод значений массива в консоль
 
-            operationsWithArray.printOddValuesOfArray(randomValues);
+            arrayPrint.printArray(randomValues);
 
-            operationsWithArray.printAscendingSelectionSortedArray(randomValues);
+            arrayPrint.printEvenOddValues(randomValues);
 
-            operationsWithArray.printDescendingSelectionSortedArray(randomValues);
+            arrayPrint.printSelectionSort(randomValues);
 
-            operationsWithArray.printAscendingBubbleSortedArray(randomValues);
-
-            operationsWithArray.printDescendingBubbleSortedArray(randomValues);
+            arrayPrint.printBubbleSort(randomValues);
         }
-        operationsWithArray.printMinMaxAverageValuesOfArray(randomValues);
+        arrayPrint.printMinMaxAverageValues(randomValues);
     }
 }
