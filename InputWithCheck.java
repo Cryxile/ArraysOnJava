@@ -41,9 +41,10 @@ public class InputWithCheck {
         return enteredValue; //повторяешь?
     }
 
-    public String readAndCheckPrintQuestionOfArray() { //возвращаемся к смыслу метода. Ждем ввод и на основании ввода отвечаем да или нет. Зачем мы возвращаем строку?
+    public boolean readAndCheckPrintQuestionOfArray() { //возвращаемся к смыслу метода. Ждем ввод и на основании ввода отвечаем да или нет. Зачем мы возвращаем строку?
 
         String arrayPrintQuestion;
+        boolean answerVariable = false;
 
         while (true) {
             try {
@@ -51,12 +52,15 @@ public class InputWithCheck {
                 if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n")) {
                     throw new Exception();
                 }
+                if (arrayPrintQuestion.equals("y")) {
+                    answerVariable = true;
+                }
                 break;
             }
             catch (Exception e) { //новый класс тут будет
                 System.out.println("Wrong symbols!");
             }
         }
-        return arrayPrintQuestion;
+        return answerVariable;
     }
 }
