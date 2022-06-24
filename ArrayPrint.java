@@ -15,44 +15,35 @@ public class ArrayPrint {
 
     public void printEvenOddValues(int[] randomValues) {
 
-        boolean sortTypeVar;
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
         System.out.print("\nArray even values: \n");
-        sortTypeVar = true;
-        arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, true));
 
         System.out.print("\nArray odd values: \n");
-        sortTypeVar = false;
-        arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, false));
     }
 
     public void printSelectionSort(int[] randomValues){
 
-        boolean sortTypeVar;
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
         System.out.print("\nSorted ascending array (Selection): \n");
-        sortTypeVar = true;
-        arrayPrinter(operationsWithArray.doSelectionSort(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.doSelectionSort(randomValues, true));
 
         System.out.print("\nSorted descending array (Selection): \n");
-        sortTypeVar = false;
-        arrayPrinter(operationsWithArray.doSelectionSort(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.doSelectionSort(randomValues, false));
     }
 
     public void printBubbleSort(int[] randomValues) {
 
-        boolean sortTypeVar;
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
         System.out.print("\nSorted ascending array (Bubble): \n");
-        sortTypeVar = true;
-        arrayPrinter(operationsWithArray.doBubbleSort(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.doBubbleSort(randomValues, true));
 
         System.out.print("\nSorted descending array (Bubble): \n");
-        sortTypeVar = false;
-        arrayPrinter(operationsWithArray.doBubbleSort(randomValues, sortTypeVar));
+        arrayPrinter(operationsWithArray.doBubbleSort(randomValues, false));
     }
 
     public void printMinMaxAverageValues(int[] randomValues) {
@@ -60,9 +51,6 @@ public class ArrayPrint {
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
         float[] returnableValuesArray = operationsWithArray.calculateMinMaxAverageValues(randomValues);
-        int arrayMaxValue = (int) returnableValuesArray[0];
-        int arrayMinValue = (int) returnableValuesArray[1];
-        float arrayAverageValue = returnableValuesArray[2];
-        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", arrayMaxValue, arrayMinValue, arrayAverageValue);
+        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", (int) returnableValuesArray[0], (int) returnableValuesArray[1], returnableValuesArray[2]);
     }
 }
