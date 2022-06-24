@@ -22,8 +22,8 @@ public class InputWithCheck {
                 break;
             } catch (ArrayDimensionException e) {
                 System.err.println(e.getMessage());
-            } catch (Exception e) {
-                System.err.println("Entered value isn't number!");
+            } catch (NumberFormatException e) {
+                System.err.println("Entered value isn't integer number!");
             }
         }
         return enteredValue;

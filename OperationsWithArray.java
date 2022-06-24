@@ -8,23 +8,20 @@ public class OperationsWithArray {
     private int arrayOddValuesCount;
 
     public int[] create(int arrayDimensionValue, int arrayMinRandomValue, int arrayMaxRandomValue) {
-
         Random rand = new Random();
         int[] randomValues = new int[arrayDimensionValue];
         for (int i = 0; i < arrayDimensionValue; i++) {
             randomValues[i] = Math.round(rand.nextInt(arrayMinRandomValue, arrayMaxRandomValue + 1));
         }
-
         return randomValues;
     }
 
     private void countEvenOddValues(int[] randomValues) {
-
         arrayEvenValuesCount = 0;
         arrayOddValuesCount = 0;
 
-        for (int i : randomValues) {
-            if (i % 2 == 0) {
+        for (int arrayElement : randomValues) {
+            if (arrayElement % 2 == 0) {
                 arrayEvenValuesCount++;
             }
             else {
@@ -34,7 +31,6 @@ public class OperationsWithArray {
     }
 
     public int[] sortEvenOddValues(int[] randomValues, boolean sortTypeVar) {
-
         countEvenOddValues(randomValues);
 
         int[] arrayEvenValues = new int[arrayEvenValuesCount];
@@ -62,7 +58,6 @@ public class OperationsWithArray {
     }
 
     public int[] doSelectionSort(int[] randomValues, boolean sortTypeVar) {
-
         for (int i = 0; i < randomValues.length; i++) {
             int limitValue = randomValues[i];
             int limitValueNumber = i;
@@ -86,18 +81,15 @@ public class OperationsWithArray {
                 randomValues[limitValueNumber] = tempVariable;
             }
         }
-
         return randomValues;
     }
 
     private void swapArrayElementsInBubbleSort(int firstValue, int secondValue) {
-
         firstSwappableElement = secondValue;
         secondSwappableElement = firstValue;
     }
 
     public int[] doBubbleSort(int[] randomValues, boolean sortTypeVar) {
-
         for (int i = 0; i < randomValues.length; i++) {
             for (int j = randomValues.length - 1; j > i; j--) {
                 if (sortTypeVar) {
@@ -119,7 +111,6 @@ public class OperationsWithArray {
     }
 
     public float[] calculateMinMaxAverageValues(int[] randomValues) {
-
         int arrayMaxValue = randomValues[0];
         int arrayMinValue = randomValues[0];
         float sumOfArrayValues = (float) randomValues[0];

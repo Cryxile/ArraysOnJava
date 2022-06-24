@@ -8,10 +8,7 @@ public class ArrayProject {
         int arrayDimensionValue = inputWithCheck.readAndCheckIntFromConsole(true);
 
         System.out.print("Enter the minimal random value: ");
-        int arrayMinRandomValue = inputWithCheck.readAndCheckIntFromConsole(false);         //А лучше еще больше обобщить и назвать readValueFromConsole.
-                                                                                                        //чтобы потом применять его и к int и к String и к чему угодно (потом расскажу как)
-
-                                                                                                        //Ну тогда я жду :D (P.s. DimAss)
+        int arrayMinRandomValue = inputWithCheck.readAndCheckIntFromConsole(false);
 
         System.out.print("Enter the maximum random value: ");
         int arrayMaxRandomValue = inputWithCheck.readAndCheckIntFromConsole(false);
@@ -20,22 +17,36 @@ public class ArrayProject {
         boolean arrayPrintQuestion = inputWithCheck.readAndCheckStringFromConsole();
 
 
+        ArrayPrint arrayPrint = new ArrayPrint();
         OperationsWithArray operationsWithArray = new OperationsWithArray();
 
         int[] randomValues = operationsWithArray.create(arrayDimensionValue, arrayMinRandomValue, arrayMaxRandomValue);
 
-        ArrayPrint arrayPrint = new ArrayPrint();
-
         if (arrayPrintQuestion) {
 
-            arrayPrint.printArray(randomValues);
+            System.out.print("Array: \n");
+            arrayPrint.arrayPrinter(randomValues);
 
-            arrayPrint.printEvenOddValues(randomValues);
+            System.out.print("\nArray even values: \n");
+            arrayPrint.arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, true));
 
-            arrayPrint.printSelectionSort(randomValues);
+            System.out.print("\nArray odd values: \n");
+            arrayPrint.arrayPrinter(operationsWithArray.sortEvenOddValues(randomValues, false));
 
-            arrayPrint.printBubbleSort(randomValues);
+            System.out.print("\nSorted ascending array (Selection): \n");
+            arrayPrint.arrayPrinter(operationsWithArray.doSelectionSort(randomValues, true));
+
+            System.out.print("\nSorted descending array (Selection): \n");
+            arrayPrint.arrayPrinter(operationsWithArray.doSelectionSort(randomValues, false));
+
+            System.out.print("\nSorted ascending array (Bubble): \n");
+            arrayPrint.arrayPrinter(operationsWithArray.doBubbleSort(randomValues, true));
+
+            System.out.print("\nSorted descending array (Bubble): \n");
+            arrayPrint.arrayPrinter(operationsWithArray.doBubbleSort(randomValues, false));
         }
-        arrayPrint.printMinMaxAverageValues(randomValues);
+
+        float[] returnableValuesArray = operationsWithArray.calculateMinMaxAverageValues(randomValues);
+        System.out.printf("\nMax value = %d \nMin value = %d \nAverage value = %.2f", (int) returnableValuesArray[0], (int) returnableValuesArray[1], returnableValuesArray[2]);
     }
 }
