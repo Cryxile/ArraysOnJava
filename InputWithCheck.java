@@ -2,46 +2,34 @@ import java.util.Scanner;
 
 public class InputWithCheck {
 
-    Scanner inputScanner = new Scanner(System.in); //плохая практика инициализировать поля прям в полях. В будущем приведет к проблемам. Для этого нужен конструктор. Вынеси в конструктор это
+    Scanner inputScanner;
 
-    public int readAndCheckDimensionValue() { //я уже писал о чем-то похожем, но напишу еще раз. Твой метод просто считывает значения из консоли. Он не имеет никакого
-                                        //логического отношения к массивам. У тебя в методе даже массива нет, тогда почему в названии фигурирует какой-то массив?
-                                        //Переименуй свой метод, чтобы он отображал суть
+    public InputWithCheck() {
 
-        int arrayDimensionValue;
+        inputScanner = new Scanner(System.in);
+    }
+
+    public int readAndCheckIntFromConsole(boolean isDimensionValue) {
+
+        int enteredValue;
 
         while (true) {
             try {
-                arrayDimensionValue = Integer.parseInt(inputScanner.nextLine());
-                if (arrayDimensionValue < 1) {
-                    throw new Exception(); // создай свой класс исключений, посмотри как это делается, заодно поймешь, что такое наследование, для чего оно нужно и как с ним работать
-                                            //и используй новый класс там, где это необходимо
+                enteredValue = Integer.parseInt(inputScanner.nextLine());
+                if (isDimensionValue && enteredValue < 1) {
+                    throw new ArrayDimensionException();
                 }
                 break;
-            }
-            catch (Exception e) { // перехвати тут свой новый класс
-                System.out.println("Wrong symbols!");
-            }
-        }
-        return arrayDimensionValue;
-    }
-
-    public int readAndCheckMinAndMaxRandomValue() {  //где-то
-
-        int enteredValue; //я
-
-        while (true) { //уже
-            try { // видел
-                enteredValue = Integer.parseInt(inputScanner.nextLine()); //подобный
-                break; //код
-            } catch (Exception e) { //зачем
-                System.out.println("Wrong symbols!"); //его
+            } catch (ArrayDimensionException e) {
+                System.err.println(e.getMessage());
+            } catch (Exception e) {
+                System.err.println("Entered value isn't number!");
             }
         }
-        return enteredValue; //повторяешь?
+        return enteredValue;
     }
 
-    public boolean readAndCheckPrintQuestionOfArray() { //возвращаемся к смыслу метода. Ждем ввод и на основании ввода отвечаем да или нет. Зачем мы возвращаем строку?
+    public boolean readAndCheckStringFromConsole() {
 
         String arrayPrintQuestion;
         boolean answerVariable = false;
@@ -50,15 +38,15 @@ public class InputWithCheck {
             try {
                 arrayPrintQuestion = inputScanner.nextLine();
                 if (!arrayPrintQuestion.equals("y") && !arrayPrintQuestion.equals("n")) {
-                    throw new Exception();
+                    throw new NotYOrNException();
                 }
                 if (arrayPrintQuestion.equals("y")) {
                     answerVariable = true;
                 }
                 break;
             }
-            catch (Exception e) { //новый класс тут будет
-                System.out.println("Wrong symbols!");
+            catch (NotYOrNException e) {
+                System.err.println(e.getMessage());
             }
         }
         return answerVariable;
