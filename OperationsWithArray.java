@@ -11,9 +11,10 @@ public class OperationsWithArray {
 
         Random rand = new Random();
         int[] randomValues = new int[arrayDimensionValue];
-        for (int i = 0; i < arrayDimensionValue; i++) {                                    // Заполнение массива случайными числами
+        for (int i = 0; i < arrayDimensionValue; i++) {
             randomValues[i] = Math.round(rand.nextInt(arrayMinRandomValue, arrayMaxRandomValue + 1));
         }
+
         return randomValues;
     }
 
@@ -60,7 +61,7 @@ public class OperationsWithArray {
         }
     }
 
-    public int[] doSelectionSort(int[] randomValues, boolean sortTypeVar) {               // СортировОчка выбором
+    public int[] doSelectionSort(int[] randomValues, boolean sortTypeVar) {
 
         for (int i = 0; i < randomValues.length; i++) {
             int limitValue = randomValues[i];
@@ -85,6 +86,7 @@ public class OperationsWithArray {
                 randomValues[limitValueNumber] = tempVariable;
             }
         }
+
         return randomValues;
     }
 
@@ -94,7 +96,7 @@ public class OperationsWithArray {
         secondSwappableElement = firstValue;
     }
 
-    public int[] doBubbleSort(int[] randomValues, boolean sortTypeVar) {          // СортировОчка пузырьковая
+    public int[] doBubbleSort(int[] randomValues, boolean sortTypeVar) {
 
         for (int i = 0; i < randomValues.length; i++) {
             for (int j = randomValues.length - 1; j > i; j--) {
@@ -124,10 +126,10 @@ public class OperationsWithArray {
         float[] returnableValuesArray = new float[3];
 
         for (int i = 1; i < randomValues.length; i++) {
-            if (arrayMaxValue < randomValues[i]) {                                                // Нахождение наибольшего значения
+            if (arrayMaxValue < randomValues[i]) {
                 arrayMaxValue = randomValues[i];
             }
-            if (arrayMinValue > randomValues[i]) {                                                // Нахождение наименьшего значения
+            if (arrayMinValue > randomValues[i]) {
                 arrayMinValue = randomValues[i];
             }
             sumOfArrayValues += (float) randomValues[i];
@@ -135,7 +137,7 @@ public class OperationsWithArray {
 
         returnableValuesArray[0] = arrayMaxValue;
         returnableValuesArray[1] = arrayMinValue;
-        returnableValuesArray[2] = sumOfArrayValues / randomValues.length;                               // Нахождение среднего значения
+        returnableValuesArray[2] = sumOfArrayValues / randomValues.length;
 
         return returnableValuesArray;
     }
