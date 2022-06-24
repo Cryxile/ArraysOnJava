@@ -1,3 +1,5 @@
+package exceptions;
+
 public class NotYOrNException extends Exception{
 
     public NotYOrNException() {

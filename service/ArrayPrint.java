@@ -1,3 +1,5 @@
+package service;
+
 public class ArrayPrint {
 
     public void arrayPrinter(int[] randomValues) {

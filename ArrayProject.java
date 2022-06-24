@@ -1,3 +1,7 @@
+import service.ArrayPrint;
+import service.InputWithCheck;
+import service.OperationsWithArray;
+
 public class ArrayProject {
 
     public static void main(String[] args) {

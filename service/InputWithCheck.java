@@ -1,3 +1,8 @@
+package service;
+
+import exceptions.ArrayDimensionException;
+import exceptions.NotYOrNException;
+
 import java.util.Scanner;
 
 public class InputWithCheck {

@@ -1,9 +1,9 @@
+package service;
+
 import java.util.Random;
 
 public class OperationsWithArray {
 
-    private int firstSwappableElement;
-    private int secondSwappableElement;
     private int arrayEvenValuesCount;
     private int arrayOddValuesCount;
 
@@ -84,25 +84,20 @@ public class OperationsWithArray {
         return randomValues;
     }
 
-    private void swapArrayElementsInBubbleSort(int firstValue, int secondValue) {
-        firstSwappableElement = secondValue;
-        secondSwappableElement = firstValue;
-    }
-
     public int[] doBubbleSort(int[] randomValues, boolean sortTypeVar) {
         for (int i = 0; i < randomValues.length; i++) {
             for (int j = randomValues.length - 1; j > i; j--) {
                 if (sortTypeVar) {
                     if (randomValues[j] < randomValues[j - 1]) {
-                        swapArrayElementsInBubbleSort(randomValues[j], randomValues[j - 1]);
-                        randomValues[j] = firstSwappableElement;
-                        randomValues[j - 1] = secondSwappableElement;
+                        int tempVariable = randomValues[j];
+                        randomValues[j] = randomValues[j - 1];
+                        randomValues[j - 1] = tempVariable;
                     }
                 } else {
                     if (randomValues[j] > randomValues[j - 1]) {
-                        swapArrayElementsInBubbleSort(randomValues[j], randomValues[j - 1]);
-                        randomValues[j] = firstSwappableElement;
-                        randomValues[j - 1] = secondSwappableElement;
+                        int tempVariable = randomValues[j];
+                        randomValues[j] = randomValues[j - 1];
+                        randomValues[j - 1] = tempVariable;
                     }
                 }
             }

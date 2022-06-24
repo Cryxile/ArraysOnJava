@@ -1,3 +1,5 @@
+package exceptions;
+
 public class ArrayDimensionException extends Exception{
 
     public ArrayDimensionException() {
